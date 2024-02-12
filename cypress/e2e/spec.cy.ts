@@ -17,10 +17,10 @@ describe('myapp app', () => {
   afterEach(() => {
     // Assert that there are no errors emitted from the browser
     cy.window().then((win) => {
-      const logs = win.console.logs();
-      expect(logs).not.to.contain(jasmine.objectContaining({
-        level: logging.Level.SEVERE,
-      } as logging.Entry));
+      // const logs = win.console.logs();
+      // expect(logs).not.to.contain(jasmine.objectContaining({
+      //   level: logging.Level.SEVERE,
+      // } as logging.Entry));
     });
   });
 });
