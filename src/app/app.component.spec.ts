@@ -9,21 +9,20 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    cy.visit('/');
+    cy.get('app-root').should('exist');
   });
 
-  it(`should have the 'abc' title`, () => {
+  it(`should have the 'MyApp' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('abc');
+    cy.get(app.title).contains('MyApp');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, abc');
+    cy.get('.app-component h1').should('contain', 'Hello, MyApp');
   });
 });
