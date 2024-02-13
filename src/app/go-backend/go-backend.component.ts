@@ -1,6 +1,6 @@
-import { Component, Injectable } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { GoBackendService } from './go-backend.service';
+import { GoBackendResponse, GoBackendService } from './go-backend.service';
 
 @Component({
   selector: 'go-backend',
@@ -11,15 +11,16 @@ import { GoBackendService } from './go-backend.service';
 export class GoBackendComponent {
   title = 'go-backend';
 
-  goResponse!: Object | void;
+  goResponse!: GoBackendResponse | void;
 
-  constructor(private http: HttpClient, private goBackendService: GoBackendService) {}
+  constructor(
+    // private http: HttpClient,
+    private goBackendService: GoBackendService
+  ) {}
 
   callGoBackend() {
-    this.goBackendService.getJSON(new URL('http://localhost:8080')).subscribe({
-      next: (response) => {
-        console.log(response);
-        alert(response);
+    this.goBackendService.getJsonData(new URL('http://localhost:8080')).subscribe({
+      next: (response: GoBackendResponse) => {
         this.goResponse = response;
       },
 

@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 import { GoBackendComponent } from './go-backend.component'
 
 describe('GoBackendComponent', () => {
