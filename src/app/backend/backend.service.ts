@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-export interface GoBackendResponse {
+export interface BackendResponse {
   status: string;
   statusCode: number;
   message: string;
 }
 
 @Injectable()
-export class GoBackendService {
+export class BackendService {
   constructor(private http: HttpClient) {}
 
   getJsonData(url: URL): Observable<any> {
-    return this.http.get<GoBackendResponse>(url.href, {responseType: 'json'}).pipe(
-    //   map((response: GoBackendResponse) => <GoBackendResponse>{message: response.message} as GoBackendResponse)
+    return this.http.get<BackendResponse>(url.href, {responseType: 'json'}).pipe(
+    //   map((response: BackendResponse) => <BackendResponse>{message: response.message} as BackendResponse)
     // ).pipe(
       tap({
-        next: (data: GoBackendResponse) => this.log(url.href, data.message),
+        next: (data: BackendResponse) => this.log(url.href, data.message),
         error: (error) => this.logError(url.href, error)
       })
     );
@@ -38,12 +38,12 @@ export class GoBackendService {
   }
 
   private log(uri: string, data: string) {
-    const message = `GoBackendService requested "${uri}" and got "${data}".`;
+    const message = `BackendService requested "${uri}" and got "${data}".`;
     console.log(message);
   }
 
   private logError(uri: string, error: any) {
-    const message = `GoBackendService failed to request "${uri}"; got error "${error.message}".`;
+    const message = `BackendService failed to request "${uri}"; got error "${error.message}".`;
     console.error(message);
   }
 }

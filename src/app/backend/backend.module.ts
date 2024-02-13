@@ -1,13 +1,13 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { GoBackendComponent } from './go-backend.component';
+import { BackendComponent } from './backend.component';
 
 
 @NgModule({
   imports:      [ CommonModule ],
-  declarations: [ GoBackendComponent ],
-  exports:      [ GoBackendComponent ]
+  declarations: [ BackendComponent ],
+  exports:      [ BackendComponent ]
 })
 export class GoBackendModule {
 //   constructor(@Optional() @SkipSelf() parentModule?: GoBackendModule) {

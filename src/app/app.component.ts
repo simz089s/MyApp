@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { GoBackendModule } from './go-backend/go-backend.module';
+import { GoBackendModule as BackendModule } from './backend/backend.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    GoBackendModule
+    BackendModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
